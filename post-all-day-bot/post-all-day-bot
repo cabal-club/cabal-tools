@@ -1,0 +1,8 @@
+#/usr/bin/env bash
+
+NUM=0
+while true; do
+  ((NUM++))
+  cabal --key $1 --channel $2 --message "#$NUM - $(date +%Y-%m-%d:%H:%M:%S)" --timeout $3
+  sleep 1
+done
