@@ -3,3 +3,4 @@ debugging software
 
 * [Docker Seeder](https://hub.docker.com/r/cabalclub/cabal-seeder/) by Nick
 * Generate debug output: `DEBUG=multifeed node cli.js --key <key> --seed`
+* print messages from a kappa-core db https://github.com/cinnamon-bun/kappa-cat
