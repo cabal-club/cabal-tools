@@ -1,6 +1,6 @@
-# `cycle-cabal.sh`
+## `cycle-cabal.sh`
 
-## Usage
+### Usage
 
 * `npm install`
 * `chmod +x cycle-cabal.sh`
