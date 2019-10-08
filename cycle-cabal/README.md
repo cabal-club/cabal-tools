@@ -1,5 +1,7 @@
 ## `cycle-cabal.sh`
 
+`cycle-cabal.sh` by cblgh, generates a new cabal key and updates the cabal-club website repo
+
 ### Usage
 
 * `npm install`

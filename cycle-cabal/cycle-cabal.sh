@@ -13,13 +13,12 @@ DIRECTORY=$(dirname -- $(readlink -fn -- "$0"))
 NEW_KEY="$(node $DIRECTORY/index.js)"
 
 # replace cabal key for website
-cat $WEBSITE | sed "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" > tmp
-mv tmp $WEBSITE
+cat $WEBSITE | sed -i "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" $WEBSITE
 
 # replace cabal dns shortname
-cat $WELL_KNOWN | sed "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" > tmp
-mv tmp $WELL_KNOWN
+cat $WELL_KNOWN | sed -i "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" $WELL_KNOWN
 
+# commit & push to cabal-club repo
 (cd $1 && git commit -am "add new cabal key" && git push)
 
 # echo new key
