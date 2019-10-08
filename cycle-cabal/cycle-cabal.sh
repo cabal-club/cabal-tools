@@ -19,5 +19,7 @@ mv tmp $WEBSITE
 cat $WELL_KNOWN | sed "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" > tmp
 mv tmp $WELL_KNOWN
 
+(cd $1 && git commit -am "add new cabal key" && git push)
+
 # echo new key
 echo $NEW_KEY
