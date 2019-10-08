@@ -7,9 +7,10 @@ fi
 
 WEBSITE="$1/index.html"
 WELL_KNOWN="$1/.well-known/cabal"
-
+# get directory of script to use with node invocation below
+DIRECTORY=$(dirname -- $(readlink -fn -- "$0"))
 # generate new cabal key
-NEW_KEY="$(node index.js)"
+NEW_KEY="$(node $DIRECTORY/index.js)"
 
 # replace cabal key for website
 cat $WEBSITE | sed "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" > tmp
