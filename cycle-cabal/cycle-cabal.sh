@@ -5,12 +5,22 @@ then
     exit
 fi
 
+echo "$1"
+echo "$2"
 WEBSITE="$1/index.html"
 WELL_KNOWN="$1/.well-known/cabal"
 # get directory of script to use with node invocation below
 DIRECTORY=$(dirname -- $(readlink -fn -- "$0"))
-# generate new cabal key
-NEW_KEY="$(node $DIRECTORY/index.js)"
+
+# if key provided as second argument, use that
+if [ $# -eq 2 ]
+then
+    NEW_KEY="$2"
+    NEW_KEY="${NEW_KEY:8}"
+else
+# otherwise, generate a new cabal key
+    NEW_KEY="$(node $DIRECTORY/index.js)"
+fi
 
 # replace cabal key for website
 cat $WEBSITE | sed -i "s/cabal:\/\/\([0-9a-fA-F]\{64\}\)/cabal:\/\/$NEW_KEY/" $WEBSITE

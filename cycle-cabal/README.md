@@ -6,6 +6,7 @@
 
 * `npm install`
 * `chmod +x cycle-cabal.sh`
-* `./cycle-cabal.sh directory/to/cabal-club.github.io/`
+* `./cycle-cabal.sh directory/to/cabal-club.github.io/ (optional cabal key)`
+    * _if the optional cabal key is omitted, a new one is generated_
 
 Note: it currently **also pushes** to the repo for cabal-club.github.io (_should it?_)
