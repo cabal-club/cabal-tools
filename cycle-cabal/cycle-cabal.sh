@@ -10,6 +10,12 @@ WELL_KNOWN="$1/.well-known/cabal"
 # get directory of script to use with node invocation below
 DIRECTORY=$(dirname -- $(readlink -fn -- "$0"))
 
+if [ ! -d "$DIRECTORY/node_modules" ]
+then
+    echo "Missing node_modules; run npm i first"
+    exit
+fi
+
 # if key provided as second argument, use that
 if [ $# -eq 2 ]
 then
